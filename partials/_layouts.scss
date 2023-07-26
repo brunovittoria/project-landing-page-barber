@@ -1,0 +1,299 @@
+.container{
+    max-width: 1440px; //Ao usar essa C.L o nav nao ira ficar colado nas laterais
+    margin: 0 auto;
+    padding: 0 15px; //Esse padding serve pra nao grudar nossos ICON e BTN agendar nos cantos
+}
+
+.bg-home::before{ //Esse C.L sera responsavel por colocar a imagem de fundo atras do nosso NAV
+    content: '';
+    display: block;
+    position: absolute;
+    background-image: linear-gradient(to bottom, rgba(6, 18, 30, 0.1), #06121e), url("../assets/bg.svg");
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    opacity: 0.9;
+}
+
+//------------------
+
+// HERO(H1 da home e botao agendar hora) -----------
+
+.hero{
+    color: $white-normal;
+    min-height: 80vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+
+    h1{                          //Funcionalidade unica do SCSS que permite acessar um elemento filho "ENCADEAMENTO"
+        text-align: center;
+        line-height: 150%;
+        max-width: 940px; //Colocamos assim pra n ficar com a frase reta
+        font-size: 46px;
+    }
+
+    p{
+        text-align: center;
+        margin: 14px 0;
+    }
+}
+
+.button-contact{
+    padding: 14px 28px;
+    color: $white-normal;
+    background-color: $red-normal;
+    text-decoration: none;
+    border: 0;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 14px 0;
+}
+
+.button-contact:hover{
+    animation: scaleButton 0.8s alternate infinite;
+}
+
+@keyframes scaleButton {
+    from{
+        transform: scale(1)
+    }
+    to{
+        transform: scale(1.07);
+    }
+}
+
+@media screen and (max-width: 768px){ // Assim que completamos algo fazemos sempre o media querie do "componente" pra mobile!
+    .hero{
+        min-height: 60vh; //Fazendo isso o hero sobe um pouco mais
+
+        h1{
+            font-size: 34px;
+            padding: 0 14px;
+            width: 100%;
+        }
+
+        p{
+            font-size: 14px;
+        }
+
+
+    }
+}
+
+@media screen and (max-width: 480px){ //Esse breakpoint serve para celulares menores
+    .hero h1{
+        font-size: 24px;
+    }
+}
+
+//---------------------
+
+// ABOUT ---------
+
+.about{
+    background-color: $primary-normal;
+    overflow: hidden;
+    color: $white-normal;
+}
+
+.about-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 34px 14px 64px 14px;
+
+    img{
+        max-width: 570px;
+    }
+}
+
+.about-content div{
+    flex: 1;  //Ao usar o Flex 1 fazemos com que cada DIV dentro do ABOUT CONTENT ocupe o espaço por igual
+}
+
+.about-description{
+    h2{
+        font-size: 38px;
+        margin-bottom: 24px;
+    }
+
+    p{
+        margin-bottom: 14px;
+        line-height: 150%;
+    }
+
+}
+
+@media screen and (max-width: 768px) { //Serve para deixar a imagem do about e o about ficarem 1 abaixo do outro
+    .about-content{
+        flex-direction: column;
+    }
+    
+}
+
+// SERVICES
+
+.services{
+    background-color: $white-normal;
+    color: $black-normal;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 54px 14px;
+}
+
+.services-content h2{
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 38px;
+    margin-bottom: 14px;
+}
+
+.services-content p{
+    line-height: 150%;
+    margin-bottom: 14px;
+    text-align: center;
+    max-width: 780px; //Ao utilizar o max-width fazemos com que o texto nao fique todo espalhado pela tela
+}
+
+.haircuts{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px; // Estamos dando espaçamentos entre os elementos
+    padding: 0 44px 34px 44px; // Estamos dando espaçamentos entre os elementos
+}
+
+.haircut{  //Faz com que ocupe um espaço igual entre elas 
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: $white-normal;
+    border-radius: 8px;
+    box-shadow: 0px -1px 17px -4px rgb(0,0,0, 0.45);
+    overflow: hidden; // Ao utilizar o hidden fazemos com que tudo que tentar passar do haircut como a imagem escondemos, fazendo isso a borda superior fica arredondada 
+
+    img{ //Fazemos com que a imagem chegue ate 100% dela e que o limite da largura seja 354px que é nesse caso o tamanho da imagem
+        width: 100%;
+        max-width: 354px; 
+        transition: transform 0.2s;
+    }
+
+}
+
+.haircut img:hover{
+    transform: scale(1.2);
+    z-index: 1;
+}
+
+.haircut-info{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 14px;
+    background-color: $white-normal;
+    z-index: 2; //Passamos esse Z-INDEX com uma camada acima do da imagem pois ao passar o mouse e a imagem crescer, nao ficara acima do haircut-info
+}
+
+.haircut-info button {
+    color: $white-normal;
+    background-color: $red-normal;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 0;
+    cursor: default; //Deixamos o cursor DEFAULT pois o nosso BTN n faz nenhuma açao , mas se futuramente fizer devemos retirar o cursor:defualt
+}
+
+@media screen and (max-width: 768px) { //Agora estamos deixando nossos SERCVICES responsivos para MOBILE
+    .haircuts{
+        flex-direction: column;
+    }
+
+    .haircut img{
+        max-width: 740px;
+    }
+
+
+}
+
+//----------------
+
+/// FOOTER
+
+.footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 54px 0;
+    gap: 24px;
+    color: $white-normal;
+}
+
+.footer-icons{
+    display: flex;
+    gap: 13px;
+    color: $white-normal;
+}
+
+//--------------------
+
+// Botao Whatsapp
+
+.btn-whatsapp{
+    position:fixed;
+    bottom: 14px;
+    right: 24px;
+    z-index: 99;
+
+
+    img{
+     max-width: 74px;
+     transition: transform 0.4s;
+    }
+
+    img:hover{
+        transform: scale(1.1);
+    }
+}
+
+.btn-whatsapp .tooltip-text{
+    visibility: hidden;
+    position: absolute;
+    background-color: $black-normal;
+    color: $white-normal;
+    width: 120px;
+    top: 8px;
+    left: -144px;
+    padding: 6px;
+    border-radius: 8px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.6s; //Aqui fazemos uma transiçao mais suave da opacidade para quando o usuario for passar o mouse demore pra aparecer
+}
+
+.btn-whatsapp:hover .tooltip-text{
+    visibility: visible;
+    opacity: 1;
+}
+
+@media screen and (max-width: 768px){ //Diminuindo o tamanho do botao quando estiver no MOBILE
+    .btn-whatsapp{
+        img{
+            max-width: 64px;
+        }
+    }
+        
+    
+}

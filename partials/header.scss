@@ -1,0 +1,85 @@
+header{
+    width: 100%;
+}
+
+.header-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+i{
+    color: $white-normal;
+}
+
+.header-icons{
+    display: flex;
+    gap: 14px; //Serve pra dar espaço entre itens
+}
+
+.header-icons a:hover{
+    i{
+        animation: animationicons 0.8s infinite alternate; // O infinite serve pra fazer sempre a animacao e o alternate pra alternar entre as aniamcoes
+        color: $red-light;
+    }
+}
+
+@keyframes animationicons {
+    from{
+        transform: translateY(0) scale(1);
+    }
+
+    to{
+        transform: translateY(-8px) scale(1.1);
+    }
+    
+}
+
+.header-button{
+    border: 1px solid $white-normal;
+    padding: 8px 24px;
+    border-radius: 4px;
+    color: $white-normal;
+    background-color: transparent;
+    text-decoration: none;
+    transition: background-color 0.8s; //Transition pra cor de fundo do BTN n mudar tao rapido
+}
+
+.header-button:hover{
+    border: 1px solid $red-light;
+    background-color: $red-light;
+}
+
+.header-logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 14px;
+}
+
+//Agora que acabamos os estilos do HEADER vamos adaptar tudo para media QUERIES >>>
+
+@media screen and (max-width: 768px){ // De 0px ate 768px ira aplicar os estilos aqui dentro
+    .header-content{
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    i{
+        margin-top: 16px;
+        font-size: 34px;
+    }
+
+    .header-logo img{
+        width: 160px;
+        margin-top: 46px;
+    }
+
+    .header-button{
+        display: none;  //Colocamos NONE pois nao queremos que o botao de agendamentos apareça no MOBILE
+    }
+
+
+}
